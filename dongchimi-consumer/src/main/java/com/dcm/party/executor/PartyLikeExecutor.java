@@ -34,8 +34,8 @@ public class PartyLikeExecutor {
             Party party = validate(key);
             party.setPartyLike(value);
             partyRepository.save(party);
+            partyLikeContext.clearPartyLikeRequest(party.getPartyId(), value);
         });
-        partyLikeContext.clearPartyLikeRequest();
     }
 
     private Party validate(Long partyId) {
